@@ -19,6 +19,7 @@ export const authOptions = {
                         email: email,
                     },
                 });
+                console.log('database checked for user');
                 if(!userExists) {
                     const result = await prisma.user.create({
                         data: {
@@ -26,6 +27,7 @@ export const authOptions = {
                             email
                         },
                     });
+                    console.log('database written');
                     return user;
                 }
             }
@@ -36,6 +38,18 @@ export const authOptions = {
 
         return user;
     },
+    // async session({session}) {
+    //     if(!session.userInfo) {
+    //         const userInfo = await prisma.user.findUnique({
+    //             where: {
+    //                 email: session.user.email,
+    //             }
+    //         });
+    //         console.log('database fetched for session');
+    //         session.userInfo = userInfo;
+    //     }
+    //     return session;
+    // },
   },
 };
 

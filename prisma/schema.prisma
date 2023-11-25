@@ -15,4 +15,6 @@ model User {
   email String  @unique
   name  String
   isProfileCompleted Boolean @default(false)
+  branch String?
+  sem String?
 }

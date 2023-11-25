@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserContext } from "@/contexts/UserContext";
+import { useContext } from "react";
 
 export default function EditProfile() {
     const router = useRouter();
+
+    const {userState} = useContext(UserContext);
+    const [userDetails, setUserDetails] = userState;
+
     const [profile,setProfile] = useState({
         branch: null,
         sem: null,
@@ -35,6 +41,7 @@ export default function EditProfile() {
         else {
             const response = await updateProfile(profile);
             if(response.user.isProfileCompleted===true) {
+                setUserDetails({...response.user});
                 router.push("/");
             }
         }

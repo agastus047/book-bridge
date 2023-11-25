@@ -6,6 +6,7 @@ export default function UserInfo() {
   const { status, data: session } = useSession();
   if (status === "authenticated") {
     return (
+      <>
       <div className="shadow-xl p-8 rounded-md flex flex-col gap-3 bg-yellow-200">
         <Image
           className="rounded-full"
@@ -21,6 +22,12 @@ export default function UserInfo() {
           Email: <span className="font-bold">{session?.user?.email}</span>
         </div>
       </div>
+      <div className="flex flex-col md:flex-row gap-5 mt-10 justify-center">
+        <button className="border border-black p-2 rounded-md">Donate</button>
+        <button className="border border-black p-2 rounded-md">Search</button>
+        <button className="border border-black p-2 rounded-md">Transactions</button>
+      </div>
+      </>
     );
   } else {
     return (

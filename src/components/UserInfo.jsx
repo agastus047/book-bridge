@@ -25,7 +25,7 @@ export default function UserInfo() {
       </div>
       <div className="flex flex-col md:flex-row gap-5 mt-10 justify-center">
         <Link href="/donate"><button className="border border-black p-2 rounded-md">Donate</button></Link>
-        <button className="border border-black p-2 rounded-md">Search</button>
+        <Link href="/search"><button className="border border-black p-2 rounded-md">Search</button></Link>
         <button className="border border-black p-2 rounded-md">Transactions</button>
       </div>
       </>

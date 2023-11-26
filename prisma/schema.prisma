@@ -17,4 +17,12 @@ model User {
   isProfileCompleted Boolean @default(false)
   branch String?
   sem String?
+  phone String?
+}
+
+model Course {
+  id    Int     @id @default(autoincrement())
+  courseCode String @unique
+  sem String
+  courseName String
 }

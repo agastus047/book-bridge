@@ -12,6 +12,7 @@ export default function EditProfile() {
     const [profile,setProfile] = useState({
         branch: null,
         sem: null,
+        phone: null,
     });
 
     const updateProfile = async (profile) => {
@@ -35,7 +36,7 @@ export default function EditProfile() {
     }
 
     async function handleSubmit() {
-        if(!profile.branch||!profile.sem) {
+        if(!profile.branch||!profile.sem||!profile.phone) {
             console.log('fill all fields');
         }
         else {
@@ -101,6 +102,17 @@ export default function EditProfile() {
                 <option value={"8"}>8</option>
             </select>
             </div>
+            </div>
+            <div className="name grid grid-rows-2 w-3/4 pb-7">
+                <span className="pb-3">
+                <label>Phone</label>
+                </span>
+                <input
+                className="input w-full max-w-xs border border-black rounded-md"
+                type={"text"}
+                name="phone"
+                onChange={handleChange}
+                ></input>
             </div>
             <button onClick={handleSubmit} className="border-2 border-black p-2 rounded-xl">Submit</button>
         </div>

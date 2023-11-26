@@ -18,6 +18,7 @@ model User {
   branch String?
   sem String?
   phone String?
+  books Book[]
 }
 
 model Course {
@@ -25,4 +26,16 @@ model Course {
   courseCode String @unique
   sem String
   courseName String
+  books Book[]
+}
+
+model Book {
+  id         Int     @id @default(autoincrement())
+  course     Course  @relation(fields: [courseCode], references: [courseCode])
+  courseCode String
+  amount     Int
+  user       User    @relation(fields: [userEmail], references: [email])
+  userEmail  String
+  author     String
+  name       String
 }

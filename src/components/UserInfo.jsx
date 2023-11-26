@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export default function UserInfo() {
   const { status, data: session } = useSession();
@@ -23,7 +24,7 @@ export default function UserInfo() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-5 mt-10 justify-center">
-        <button className="border border-black p-2 rounded-md">Donate</button>
+        <Link href="/donate"><button className="border border-black p-2 rounded-md">Donate</button></Link>
         <button className="border border-black p-2 rounded-md">Search</button>
         <button className="border border-black p-2 rounded-md">Transactions</button>
       </div>

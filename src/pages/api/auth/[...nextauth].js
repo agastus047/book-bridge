@@ -2,55 +2,55 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "@/../lib/prisma";
 
-export const authOptions = {
-  providers: [
-    GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      }),
-  ],
-  callbacks: {
-    async signIn({user,account}) {
-        if(account.provider === "google") {
-            const {name,email} = user;
-            try {
-                const userExists = await prisma.user.findUnique({
-                    where: {
-                        email: email,
-                    },
-                });
-                console.log('database checked for user');
-                if(!userExists) {
-                    const result = await prisma.user.create({
-                        data: {
-                            name,
-                            email
-                        },
-                    });
-                    console.log('database written');
-                    return user;
+export const authOptions = (req, res) => {
+    return {
+        providers: [
+            GoogleProvider({
+                clientId: process.env.GOOGLE_CLIENT_ID,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                profile: async (profile) => {
+                    try {
+                        // create user here all details in profile object
+                    } catch (err) {
+                        throw new Error(err.message)
+                    }
                 }
-            }
-            catch(err) {
-                console.log(err);
-            }
-        }
+            }),
+            CredentialsProvider({
+                id: 'credentials-update',
+                credentials: {},
+                async authorize(credentials) {
+                    try {
+                        const { email, department, division, address } = credentials;
+                        const user = await Users.findOne({ email: email }); // find the user to update values
+                        if (!user) {
 
-        return user;
-    },
-    // async session({session}) {
-    //     if(!session.userInfo) {
-    //         const userInfo = await prisma.user.findUnique({
-    //             where: {
-    //                 email: session.user.email,
-    //             }
-    //         });
-    //         console.log('database fetched for session');
-    //         session.userInfo = userInfo;
-    //     }
-    //     return session;
-    // },
-  },
+                            throw new Error('User not found');
+
+                        } else {
+                            // update user
+                        }
+                    } catch (err) {
+                        console.log('error', err.message);
+                        throw new Error(err.message);
+                    }
+                },
+            })
+        ],
+        callbacks: {
+            jwt: async ({ token, user }) => {
+                user && (token.user = user);
+                return token;
+            },
+            session: async ({ session, token }) => {
+                console.log(token.user)
+                session.user = token.user
+                return session;
+            },
+        }
+    }
 };
 
-export default NextAuth(authOptions);
+export default (req, res) => {
+    return NextAuth(req, res, authOptions(req, res));
+};

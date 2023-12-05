@@ -26,6 +26,7 @@ export default function Layout({children}) {
 
   useEffect(() => {
     (async () => {
+      console.log('use effect running with status:',status);
       if(status==="authenticated") {
         if(!userDetails) {
           const response = await getData();

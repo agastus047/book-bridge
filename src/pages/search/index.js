@@ -1,6 +1,13 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { UserContext } from "@/contexts/UserContext";
+import { useRouter } from "next/router";
 
 export default function Search() {
+
+    const router = useRouter();
+
+    const {userState} = useContext(UserContext);
+    const [userDetails, setUserDetails] = userState;
 
     const [sem,setSem] = useState(null);
     const [books,setBooks] = useState(null);
@@ -10,6 +17,24 @@ export default function Search() {
 
         setSem(value);
     }
+
+    const buyBook = async (data) => {
+        const user = await fetch('/api/buy',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+        });
+        return user.json();
+    };
+
+    const handleBuy = async (sellerId,buyerId,amount,bookId) => {
+        const response = await buyBook({sellerId,buyerId,amount,bookId});
+        if(response.donationDetails) {
+            router.push("/");
+        }
+    };
 
     const searchBook = async (data) => {
         const user = await fetch('/api/search',{
@@ -61,7 +86,7 @@ export default function Search() {
                         <span>{book.name}</span>
                         <span>{book.author}</span>
                         <span>Rs.{book.amount}</span>
-                        <button className="border border-black p-1 rounded-md">Buy</button>
+                        <button onClick={() => handleBuy(book.user.id,userDetails.id,book.amount,book.id)} className="border border-black p-1 rounded-md">Buy</button>
                     </div>)}
                 </div>
             }

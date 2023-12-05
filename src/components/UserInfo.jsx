@@ -23,10 +23,10 @@ export default function UserInfo() {
           Email: <span className="font-bold">{session?.user?.email}</span>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-5 mt-10 justify-center">
+      <div className="flex flex-col md:flex-row gap-5 mt-10 justify-center items-center w-full">
         <Link href="/donate"><button className="border border-black p-2 rounded-md">Donate</button></Link>
         <Link href="/search"><button className="border border-black p-2 rounded-md">Search</button></Link>
-        <button className="border border-black p-2 rounded-md">Transactions</button>
+        <Link href="#"><button className="border border-black p-2 rounded-md">Transactions</button></Link>
       </div>
       </>
     );

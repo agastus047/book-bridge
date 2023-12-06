@@ -49,8 +49,10 @@ export default function EditProfile() {
     }
 
     return(
+        <div class="editfull">
+            <br></br>
         <div className="flex flex-col items-center mt-10">
-            <div>Edit Profile</div>
+            <div class="edithead">Edit Profile</div>
             <div className="branch grid grid-rows-2 w-3/4 pb-7 ">
             <span className="pb-3">
             <label>Branch</label>
@@ -59,47 +61,47 @@ export default function EditProfile() {
             <select
                 onChange={handleChange}
                 name="branch"
-                className="w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75"
+                className=" items w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75"
                 defaultValue={"null"}
             >
-                <option value={"null"} disabled>
+                <option class="items"value={"null"} disabled>
                 choose branch
                 </option>
-                <option value={"ece"}>ECE (T)</option>
-                <option value={"mech"}>Mech (M)</option>
-                <option value={"civil"}>Civil (C)</option>
-                <option value={"cs"}>CS (R)</option>
-                <option value={"eee"}>EEE (E)</option>
-                <option value={"chem"}>Chem(H)</option>
-                <option value={"arch"}>Arch(A)</option>
-                <option value={"mech-pro"}>Mech Pro</option>
-                <option value={"electrical&computer"}>ERE</option>
+                <option class="items"value={"ece"}>ECE (T)</option>
+                <option class="items"value={"mech"}>Mech (M)</option>
+                <option class="items"value={"civil"}>Civil (C)</option>
+                <option class="items"value={"cs"}>CS (R)</option>
+                <option class="items"value={"eee"}>EEE (E)</option>
+                <option class="items"value={"chem"}>Chem(H)</option>
+                <option class="items"value={"arch"}>Arch(A)</option>
+                <option class="items"value={"mech-pro"}>Mech Pro</option>
+                <option class="items"value={"electrical&computer"}>ERE</option>
             </select>
             </div>
             </div>
-            <div className="branch grid grid-rows-2 w-3/4 pb-7 ">
+            <div className="items branch grid grid-rows-2 w-3/4 pb-7 ">
             <span className="pb-3">
-            <label>Year</label>
+            <label className="text-white" >Year</label>
             </span>
 
             <div>
             <select
                 onChange={handleChange}
                 name="sem"
-                className="w-3/4 py-4 rounded-lg gray-bg opacity-75"
+                className="items w-3/4 py-4 rounded-lg gray-bg opacity-75"
                 defaultValue={"null"}
             >
-                <option value={"null"} disabled>
+                <option class="items" value={"null"} disabled >
                 choose sem
                 </option>
-                <option value={"1"}>1</option>
-                <option value={"2"}>2</option>
-                <option value={"3"}>3</option>
-                <option value={"4"}>4</option>
-                <option value={"5"}>5</option>
-                <option value={"6"}>6</option>
-                <option value={"7"}>7</option>
-                <option value={"8"}>8</option>
+                <option class="items" value={"1"}>1</option>
+                <option class="items"value={"2"}>2</option>
+                <option class="items" value={"3"}>3</option>
+                <option class="items"value={"4"}>4</option>
+                <option class="items"value={"5"}>5</option>
+                <option class="items"value={"6"}>6</option>
+                <option class="items"value={"7"}>7</option>
+                <option class="items"value={"8"}>8</option>
             </select>
             </div>
             </div>
@@ -107,14 +109,16 @@ export default function EditProfile() {
                 <span className="pb-3">
                 <label>Phone</label>
                 </span>
-                <input
-                className="input w-full max-w-xs border border-black rounded-md"
+                <input 
+                  className="items  w-3/4 py-4 rounded-lg gray-bg opacity-75"
                 type={"text"}
                 name="phone"
                 onChange={handleChange}
                 ></input>
             </div>
-            <button onClick={handleSubmit} className="border-2 border-black p-2 rounded-xl">Submit</button>
+            <button onClick={handleSubmit} className="bg-yellow-950 hover:bg-yellow-900 text-white border border-slate-950 font-bold py-2 px-4 rounded">Submit</button>
+            <br></br>
+        </div>
         </div>
     );
 }

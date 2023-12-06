@@ -58,8 +58,9 @@ export default function Search() {
     }
 
     return(
+        <div class="editfullsearch">
         <div className="flex flex-col items-center mt-10">
-            <div>Search For A Book</div>
+            <div class="edithead">Search For A Book</div>
             <div className="branch grid grid-rows-2 w-3/4 pb-7 ">
             <span className="pb-3">
             <label>Semester</label>
@@ -68,28 +69,31 @@ export default function Search() {
             <select
                 onChange={handleChange}
                 name="branch"
-                className="w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75"
+                className="items w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75"
                 defaultValue={"null"}
             >
-                <option value={"null"} disabled>
+                <option class="items"value={"null"} disabled>
                 enter sem
                 </option>
-                <option value={"3"}>3</option>
-                <option value={"4"}>4</option>
+                <option class="items"value={"3"}>3</option>
+                <option class="items"value={"4"}>4</option>
             </select>
             </div>
             </div>
-            <button onClick={handleSearch} className="border p-2 border-black rounded-md">Search</button>
+            
+            <button onClick={handleSearch} class="bg-yellow-950 hover:bg-yellow-900 text-white border border-slate-950 font-bold py-2 px-4 rounded">Search</button>
             {books &&
-                <div className="mt-5 p-7 border border-black flex flex-col gap-4">
+                <div className="bg-stone-950 mt-5 p-7 border border-black flex flex-col gap-4">
                     {books.map((book,index) => <div key={index} className="flex gap-4 justify-between">
                         <span>{book.name}</span>
                         <span>{book.author}</span>
                         <span>Rs.{book.amount}</span>
-                        <button onClick={() => handleBuy(book.user.id,userDetails.id,book.amount,book.id)} className="border border-black p-1 rounded-md">Buy</button>
+                        <button  class="bg-orange-800 hover:bg-orange-700 text-white font-bold py-2 px-5 rounded "onClick={() => handleBuy(book.user.id,userDetails.id,book.amount,book.id)} >Buy</button>
                     </div>)}
                 </div>
             }
+            </div>
         </div>
+        
     );
 }

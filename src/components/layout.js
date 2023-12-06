@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import { UserContext } from "@/contexts/UserContext";
 
+
 export default function Layout({children}) {
   const {status} = useSession();
   const router = useRouter();
@@ -48,10 +49,12 @@ export default function Layout({children}) {
         <Head>
             <title>Book Bridge</title>
         </Head>
+        <div class="maincss">
         <div className="flex flex-col min-h-screen">
             <Navbar/>
             <main className="flex-auto">{children}</main>
             <Footer/>
+        </div>
         </div>
     </>);
 };

@@ -1,3 +1,107 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.maincss{
+   background-image: url('/img.jpg');
+   margin: 0; /* Remove default margin */
+   padding: 0; /* Remove default padding */
+  
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100vh; /* Ensure the body takes up the full viewport height */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #ffffff; 
+   font-family:font-serif;
+   
+}
+.marginhome
+{
+    margin-left: 1200px;
+    padding-right: 30px;
+}
+.signin
+{
+    margin:1380px;
+}
+.edithead
+{
+    font-size:40px;
+    align-items: center;
+  padding-bottom: 40px;
+}
+.items
+{
+    color: black;
+}
+.editfull
+{
+ align-items: center;
+background: #401F10;
+opacity: 0.8;
+
+};
+.mar
+{
+    margin-left:1500px;
+}
+.submitbutton
+{
+    padding: 10px;
+}
+.editfulldonate
+{
+    max-width: 400px; /* Set the maximum width */
+    width: 100%; 
+ display: flex;
+ align-items: center;
+ justify-content: center;
+background: #401F10;
+margin-left: 500px;
+
+opacity: 0.8
+
+;
+
+};
+.search1
+{
+    background-color: #401F10;
+}
+.editfullsearch
+{
+    max-width: 500px; /* Set the maximum width */
+    width: 100%; 
+ display: flex;
+ align-items: center;
+ justify-content: center;
+background: #401F10;
+margin-left: 500px;
+padding-bottom:30px;
+opacity: 0.8;
+margin-top:100px
+
+};
+.buybutton
+{
+    font-size: large;
+}
+.headbook{
+    margin-top: 40px;
+}
+.byline{
+    margin-left: 80px;
+    margin-top:25px;
+    width:1000px;
+}
+.irish{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: rgba(39.2, 26.3, 20.4,0.75);
+    height:300px;
+}

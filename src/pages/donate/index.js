@@ -44,8 +44,10 @@ export default function DonateBook() {
     }
 
     return(
+        <div class="editfulldonate">
+            <br></br>
         <div className="flex flex-col items-center mt-10">
-            <div>Donate Book</div>
+            <div class="edithead">Donate Book</div>
             <div className="branch grid grid-rows-2 w-3/4 pb-7 ">
             <span className="pb-3">
             <label>Course Code</label>
@@ -54,16 +56,16 @@ export default function DonateBook() {
             <select
                 onChange={handleChange}
                 name="courseCode"
-                className="w-3/4 py-4 px-1 rounded-lg gray-bg opacity-75"
+                className="items name grid grid-rows-2 w-3/4 pb-4 w-full max-w-xs border border-black rounded-md"
                 defaultValue={"null"}
             >
-                <option value={"null"} disabled>
+                <option class="items"  value={"null"} disabled>
                 choose code
                 </option>
-                <option value={"CS-201"}>CS-201</option>
-                <option value={"CS-203"}>CS-203</option>
-                <option value={"CS-210"}>CS-210</option>
-                <option value={"CS-305"}>CS-305</option>
+                <option class="items"value={"CS-201"}>CS-201</option>
+                <option class="items"value={"CS-203"}>CS-203</option>
+                <option class="items"value={"CS-210"}>CS-210</option>
+                <option class="items"value={"CS-305"}>CS-305</option>
             </select>
             </div>
             </div>
@@ -72,7 +74,7 @@ export default function DonateBook() {
                 <label>Amount</label>
                 </span>
                 <input
-                className="input w-full max-w-xs border border-black rounded-md"
+                className="items input w-full max-w-xs border border-black rounded-md"
                 type={"number"}
                 name="amount"
                 onChange={handleChange}
@@ -83,7 +85,7 @@ export default function DonateBook() {
                 <label>Author</label>
                 </span>
                 <input
-                className="input w-full max-w-xs border border-black rounded-md"
+                className="items input w-full max-w-xs border border-black rounded-md"
                 type={"text"}
                 name="author"
                 onChange={handleChange}
@@ -94,13 +96,16 @@ export default function DonateBook() {
                 <label>Name</label>
                 </span>
                 <input
-                className="input w-full max-w-xs border border-black rounded-md"
+                className="items input w-full max-w-xs border border-black rounded-md"
                 type={"text"}
                 name="name"
                 onChange={handleChange}
                 ></input>
             </div>
-            <button onClick={handleSubmit} className="border-2 border-black p-2 rounded-xl">Submit</button>
+            <button onClick={handleSubmit} className="bg-yellow-950 hover:bg-yellow-900 text-white border border-slate-950 font-bold py-2 px-4 rounded">Submit</button>
+            <br>
+            </br>
+        </div>
         </div>
     );
 }
